@@ -1,5 +1,7 @@
 FROM resin/armv7hf-debian
 
+LABEL maintainer="syed.samiruddin@gmail.com"
+
 RUN [ "cross-build-start" ]
 
 RUN apt-get update
@@ -13,5 +15,7 @@ RUN mkdir -p /opt/dotnet
 RUN tar zxf dotnet-runtime-latest-linux-arm.tar.gz -C /opt/dotnet
 
 RUN ln -s /opt/dotnet/dotnet /usr/local/bin
+
+RUN rm dotnet-runtime-latest-linux-arm.tar.gz
 
 RUN [ "cross-build-end" ]
